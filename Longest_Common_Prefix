@@ -1,0 +1,15 @@
+class Solution:
+    def longestCommonPrefix(self, strs: list[str]) -> str:
+        if not strs:
+            return ""
+        
+        # Use first string as reference
+        for i, char in enumerate(strs[0]):
+            # Check this character position in all other strings
+            for other in strs[1:]:
+                # If other string is too short OR character doesn't match
+                if i >= len(other) or other[i] != char:
+                    return strs[0][:i]
+        
+        # If we finish the loop, entire first string is the prefix
+        return strs[0]
